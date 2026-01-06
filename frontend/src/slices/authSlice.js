@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import API_URL from '../config';
 
-const API_URL = 'http://localhost:8000/api';
+const API_URL_AUTH = API_URL;
 
 export const loginUser = createAsyncThunk('auth/loginUser', async ({ phone_number, otp }, thunkAPI) => {
     try {

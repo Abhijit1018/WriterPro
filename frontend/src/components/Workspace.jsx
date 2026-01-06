@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateWallet } from '../slices/authSlice';
 import { ZoomIn, ZoomOut, Save } from 'lucide-react';
+import API_URL from '../config';
 
 const Workspace = () => {
     const { id } = useParams();
@@ -21,7 +22,7 @@ const Workspace = () => {
         // We need image URL.
         // Let's fetch list and find, or detail endpoint.
         // We haven't implemented detail endpoint specifically in viewset (ModelViewSet has it by default).
-        axios.get(`http://localhost:8000/api/tasks/${id}/`, {
+        axios.get(`${API_URL}/tasks/${id}/`, {
             headers: { Authorization: `Bearer ${token}` }
         }).then(res => setTask(res.data)).catch(err => console.error(err));
     }, [id, token]);
@@ -29,7 +30,7 @@ const Workspace = () => {
     const handleSubmit = async () => {
         setSubmitting(true);
         try {
-            const res = await axios.post('http://localhost:8000/api/submissions/', {
+            const res = await axios.post(`${API_URL}/submissions/`, {
                 task: id,
                 typed_content: content
             }, {

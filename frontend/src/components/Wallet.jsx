@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import API_URL from '../config';
 
 const Wallet = () => {
     const { user, token } = useSelector((state) => state.auth);
@@ -18,7 +19,7 @@ const Wallet = () => {
         // Fetch real if possible, else mock
         // Let's assume endpoint /api/transactions/ exists for now, 
         // I will add it to backend shortly.
-        axios.get('http://localhost:8000/api/transactions/', {
+        axios.get(`${API_URL}/transactions/`, {
             headers: { Authorization: `Bearer ${token}` }
         }).then(res => setTransactions(res.data)).catch(err => {
             console.log("Failed to fetch transactions", err);

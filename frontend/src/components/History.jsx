@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { CheckCircle, XCircle, Clock } from 'lucide-react';
+import API_URL from '../config';
 
 const History = () => {
     const { token } = useSelector((state) => state.auth);
     const [submissions, setSubmissions] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/submissions/', {
+        axios.get(`${API_URL}/submissions/`, {
             headers: { Authorization: `Bearer ${token}` }
         }).then(res => setSubmissions(res.data)).catch(console.error);
     }, [token]);

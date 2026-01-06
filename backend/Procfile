@@ -1,0 +1,1 @@
+web: gunicorn writeearn_backend.wsgi --log-file -

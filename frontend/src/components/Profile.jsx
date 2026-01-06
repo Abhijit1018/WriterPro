@@ -4,8 +4,7 @@ import axios from 'axios';
 import { setUser } from '../slices/authSlice';
 import ThemeToggle from './ThemeToggle';
 import { CheckCircle, Bell, Save, User as UserIcon } from 'lucide-react';
-
-const API_URL = 'http://localhost:8000/api';
+import API_URL from '../config';
 
 const Profile = () => {
   const { user, token } = useSelector((state) => state.auth);

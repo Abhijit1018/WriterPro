@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { updateWallet } from '../slices/authSlice';
+import API_URL from '../config';
 import {
     Banknote,
     Lock,
@@ -36,7 +37,7 @@ const Dashboard = () => {
 
     const fetchTasks = async () => {
         try {
-            const res = await axios.get('http://localhost:8000/api/tasks/', {
+            const res = await axios.get(`${API_URL}/tasks/`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setTasks(res.data);
@@ -54,7 +55,7 @@ const Dashboard = () => {
         if (user.role === 'TRAINEE' && task.type === 'PAID') return;
 
         try {
-            await axios.post(`http://localhost:8000/api/tasks/${task.id}/lock/`, {}, {
+            await axios.post(`${API_URL}/tasks/${task.id}/lock/`, {}, {
                 headers: { Authorization: `Bearer ${token}` }
             });
 

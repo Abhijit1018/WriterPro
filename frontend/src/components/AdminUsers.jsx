@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { ArrowUpRight, RefreshCw } from 'lucide-react';
-
-const API_URL = 'http://localhost:8000/api';
+import API_URL from '../config';
 
 const AdminUsers = () => {
   const { token } = useSelector((state) => state.auth);
