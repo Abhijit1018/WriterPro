@@ -42,15 +42,20 @@ python -c "from django.core.management.utils import get_random_secret_key; print
 
 4. Railway automatically adds `DATABASE_URL` - no need to add it manually
 
-### Step 4: Configure Build Settings
-1. Go to **"Settings"** tab
-2. Set **Root Directory**: `backend`
-3. Set **Build Command**: `pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate`
-4. Set **Start Command**: `gunicorn writeearn_backend.wsgi --log-file -`
+### Step 4: Deploy
+1. Railway will automatically deploy using the Procfile configuration
+2. Once the app is deployed, go to **"Deployments"** → Select the latest deployment
+3. Click **"Terminal"** tab and run these commands:
+```bash
+cd backend
+python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py createsuperuser  # Optional: create admin user
+```
+4. Copy your backend URL from the top of the Railway dashboard (e.g., `https://your-backend.railway.app`)
 
-### Step 5: Deploy
-1. Railway will automatically deploy
-2. Once deployed, copy your backend URL (e.g., `https://your-backend.railway.app`)
+### Step 5: Update Environment Variables
+1. Once deployed, update your `ALLOWED_HOSTS` with the actual Railway domain
 3. Update **ALLOWED_HOSTS** variable with your Railway domain
 
 ---
