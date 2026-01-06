@@ -1,10 +1,10 @@
 {
   "$schema": "https://railway.com/railway.schema.json",
   "build": {
-    "builder": "NIXPACKS",
-    "nixPackages": ["python3"]
+    "builder": "NIXPACKS"
   },
   "deploy": {
     "startCommand": "gunicorn writeearn_backend.wsgi --log-file -"
   }
 }
+
