@@ -1,0 +1,4 @@
+/* Global tweaks for the landing + dashboard layout */
+#root {
+  min-height: 100vh;
+}
